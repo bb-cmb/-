@@ -9,6 +9,18 @@
 - Write交互交易Hash：`0x21fe0a5f7a6c735e3edcafe3996a57b34ae934920d59f7e639a4f90a2342dbc8`
 
 ## 2. 合约功能说明
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract MessageBoard {
+    string public message;
+
+    function write(string calldata _newMessage) external {
+        message = _newMessage;
+    }
+}
+
 极简入门合约，区分链上两种交互逻辑：
 1. **Write 写入函数 write(string)**
    修改链上持久化存储的字符串，属于状态变更操作，**必须消耗Gas**，需要钱包签名发起交易，打包上链后数据永久留存。
