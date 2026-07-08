@@ -1,15 +1,21 @@
-# Web3 Day2｜最小留言板Solidity合约生成、审计、部署交互完整记录
+# Web3 Day2｜最小留言板Solidity合约生成、部署、交互完整记录
 ## （一）AI生成Solidity合约 & 人工代码审计
 ### 1. 本次使用的Prompt
 ```
-你是一位精通 Solidity 的智能合约专家，擅长编写极简、安全的代码用于教学演示。
+角色设定：你是一位精通 Solidity 的智能合约专家，擅长编写极简、安全的代码用于教学演示。
 任务目标：请为我编写一个最小的、可运行的 Solidity 留言板合约。
 具体要求：
-版本：使用 pragma solidity ^0.8.20;
+1.版本： 使用  pragma solidity ^0.8.20; 。
 核心功能：
-1. 提供一个 write 函数：允许任何人传入一个字符串（留言内容），并将其存储在链上。不需要检查重复，不需要存入数组，只需要覆盖存储即可（保持最简单）。
-2. 提供一个 read 函数（或者 public 变量）：允许任何人读取当前存储的这条留言。
-输出完整可编译代码，并简单解释每一段合约结构。
+1.提供一个  write  函数：允许任何人传入一个字符串（留言内容），并将其存储在链上。不需要检查重复，不需要存入数组，只需覆盖存储即可（保持最简单）。
+2.提供一个  read  函数（或者 public 变量）：允许任何人读取当前存储的这条留言。
+代码风格：
+1.不要包含任何复杂的权限控制（如  onlyOwner ）。
+2.不要包含 Event（事件）发射，除非为了教学必须。
+3.代码必须包含 SPDX 许可证声明。
+输出格式：
+1.先给出完整的代码块。
+2.然后简要解释哪部分是“写操作”，哪部分是“读操作”。
 ```
 
 ### 2. AI生成完整输出内容
@@ -32,13 +38,13 @@ contract MessageBoard {
 ```
 #### 2.2 AI对合约结构的解释
 1. `SPDX-License-Identifier: MIT`：开源许可证，Remix编译强制要求，避免编译警告。
-2. `pragma solidity ^0.8.20;`：指定编译器版本，^代表兼容0.8.20及以上同大版本。
+2. `pragma solidity ^0.8.20;`：指定编译器版本，^代表兼容0.8.20及以上的版本。
 3. `contract MessageBoard`：合约主体，命名为留言板。
 4. `string public message;` 链上状态变量，自动生成只读getter，等价read读取函数。
 5. `constructor` 部署构造函数，部署时可以传入初始留言。
 6. `write()` 外部写入函数，calldata节省gas，覆盖更新链上留言字符串。
 
-### 3. 最终定稿合约源码（人工校验后无修改，可直接编译部署）
+### 3. 最终定稿合约源码（人工校验后有修改，方便无需录入参数直接编译部署）
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
@@ -52,14 +58,6 @@ contract MessageBoard {
     string public message;
 
     /**
-     * @dev 部署构造函数，部署时初始化第一条留言
-     * @param _initialMessage 初始留言文本
-     */
-    constructor(string memory _initialMessage) {
-        message = _initialMessage;
-    }
-
-    /**
      * @dev 写入留言函数，修改链上存储，消耗Gas
      * @param _newMessage 待覆盖写入的新留言内容
      */
@@ -70,7 +68,7 @@ contract MessageBoard {
 ```
 
 ### 4. 人工修改与判断说明
-1. **无功能性代码修改**：AI生成代码完全满足需求，可直接编译、部署、交互。
+1. **无功能性代码修改**：AI生成代码完全满足需求，可直接编译、部署、交互。(仅修改至无需录入参数，方便Remix部署成功，原来的AI生成的合约源码也没有影响)
 2. **仅优化补充注释**：给合约、构造函数、write函数增加标准化NatSpec注释，方便新手读懂每一段逻辑，不改变合约执行逻辑。
 3. **功能判定**：合约完全符合最小留言板需求，无多余复杂逻辑，无权限漏洞，无安全隐患。
 
@@ -91,10 +89,10 @@ AI容易漏写`SPDX-License-Identifier`或者版本号写错，会导致Remix编
 ### 2. 完整部署&交互操作流程
 #### 2.1 编译合约（Remix IDE）
 1. 打开Remix，新建`MessageBoard.sol`粘贴定稿合约代码；
-2. 编译器版本切换0.8.20，点击Compile，无报错编译完成。
+2. 编译器版本切换0.8.20及以上版本，点击Compile，无报错编译完成。
 
 <div align="center">
-<img src="../assets/images/remix-code-ai-generate.png" width="1800">
+<img width="1917" height="1052" alt="1cc7251e59b80e33bb6f546c04bd84cd" src="https://github.com/user-attachments/assets/129e11b7-0c64-4670-b534-37aa32793899" />
 <p>AI生成合约代码与Remix编译界面</p>
 </div>
 
@@ -104,13 +102,8 @@ AI容易漏写`SPDX-License-Identifier`或者版本号写错，会导致Remix编
 3. 输入初始留言，点击Deploy，钱包确认部署交易，等待区块确认。
 
 <div align="center">
-<img src="../assets/images/remix-deploy-page.png" width="1700">
+<img width="1917" height="1052" alt="1cc7251e59b80e33bb6f546c04bd84cd" src="https://github.com/user-attachments/assets/23d291f4-90a8-445f-a75d-d2886fc16d4f" />
 <p>Remix部署合约界面，部署交易确认成功</p>
-</div>
-
-<div align="center">
-<img src="../assets/images/deploy-tx-detail.png" width="1300">
-<p>部署交易区块浏览器详情</p>
 </div>
 
 #### 2.3 Write写操作交互（消耗Gas）
@@ -118,12 +111,12 @@ AI容易漏写`SPDX-License-Identifier`或者版本号写错，会导致Remix编
 2. 点击Transact发起上链写入交易，等待打包确认。
 
 <div align="center">
-<img src="../assets/images/write-function-ui.png" width="1800">
+<img width="1878" height="997" alt="eb5bd5ea2f77e2471d4d1a08fd60fc11" src="https://github.com/user-attachments/assets/ad43c4b1-8137-4907-9dee-b4ea4606fe1f" />
 <p>write函数写入留言操作界面</p>
 </div>
 
 <div align="center">
-<img src="../assets/images/write-tx-explorer.png" width="1800">
+<img width="1803" height="942" alt="3e5835c5f4ce73ea94b8d762cfac7acd" src="https://github.com/user-attachments/assets/4a93ff1a-a5dc-4521-978c-9641cd9853f2" />
 <p>区块浏览器合约页面，展示Write交互记录</p>
 </div>
 
@@ -131,7 +124,7 @@ AI容易漏写`SPDX-License-Identifier`或者版本号写错，会导致Remix编
 点击合约自带`message`读取按钮，点击Call，直接返回链上存储的留言文本，验证写入成功。
 
 <div align="center">
-<img src="../assets/images/read-function-result.png" width="1800">
+<img width="1882" height="996" alt="c94ae9945c9215f22076dc607ca8990f" src="https://github.com/user-attachments/assets/272d2871-1721-4c6b-bb08-90dc37aabd49" />
 <p>read读取留言返回结果界面</p>
 </div>
 
@@ -145,5 +138,5 @@ AI容易漏写`SPDX-License-Identifier`或者版本号写错，会导致Remix编
 完整链路闭环：AI生成合约代码 → Remix编译校验 → MetaMask连接测试网部署 → 发起Write写入交易 → Read读取验证数据 → 区块浏览器校验所有链上记录。
 
 ### 4. 配套文档链接
-- AI合约审计任务文档：https://github.com/bb-cmb/-/blob/e6513b867b073c91788bc8364f780e772e633479/README.md
-- 合约部署交互完整README：https://github.com/bb-cmb/-/blob/e8b614bb57de5f5a441c114146cc313ddc4282eb/1README.md
+- AI合约审计任务文档（README.md）：https://github.com/bb-cmb/-/blob/e6513b867b073c91788bc8364f780e772e633479/README.md
+- 合约部署交互完整README（1README.md）：https://github.com/bb-cmb/-/blob/e8b614bb57de5f5a441c114146cc313ddc4282eb/1README.md
