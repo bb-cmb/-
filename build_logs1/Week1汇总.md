@@ -43,7 +43,7 @@
 
 ### 基于Message最小Solidity合约生成DApp(大部分AI生成)
 
-已生成 `index.html`，以下是功能对照：
+已生成 `index.html`，以下是功能对照和 `index.html`代码内容：
 
 ```
 <!DOCTYPE html>
@@ -506,10 +506,10 @@
 | **错误处理** | 无 MetaMask / 拒绝连接 / 拒绝交易 均有提示 |
 
 ---
-
+## 在CodeBuddy CN中的Cloud Studio 部署后的链接（可打开，是在有我的合约地址的前提下，会消耗gas)：http://fc3ce12862864904a0e926dbe7dcd0b8.codebuddy.cloudstudio.run/
 ## 使用步骤
 
 1. 在 Remix 部署合约 → 复制地址
-2. 打开 `index.html`，找到顶部 `CONTRACT_ADDRESS = ""`，粘贴地址
-3. 连接 MetaMask（确保在 Sepolia 测试网）
+2. 打开 `index.html`，找到顶部 `CONTRACT_ADDRESS = ""`(应该是在243行)，粘贴在Remix部署生成的合约地址后再保存关闭后再打开网址
+3. 连接 MetaMask（确保在Monad Testnet测试网）
 4. 输入留言 → 发布 → 查看链上结果
