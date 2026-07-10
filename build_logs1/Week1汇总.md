@@ -41,7 +41,7 @@
 2. 如何区分“技术可行”与“用户真实需求”，精准判断高频链上产品落地价值；
 3. 调研Monad异步执行、储备余额机制对产品设计的隐藏约束，搜集相关落地实操案例。
 
-### 基于Message最小Solidity合约生成DApp(大部分AI生成)
+## 基于Message最小Solidity合约生成DApp(大部分AI生成)
 
 已生成 `index.html`，以下是功能对照和 `index.html`代码内容：
 
@@ -502,11 +502,12 @@
 | **字符限制** | `maxlength="200"` + 实时字数统计（>180 变黄警告） |
 | **账户切换** | `accountsChanged` 监听，自动重连并刷新留言 |
 | **链切换** | `chainChanged` 监听，自动更新网络状态 |
-| **网络检测** | 非 Sepolia 显示红色警告，支持一键切换 |
+| **网络检测** | 非 Monad Testnet显示红色警告，支持一键切换 |
 | **错误处理** | 无 MetaMask / 拒绝连接 / 拒绝交易 均有提示 |
 
 ---
-## 在CodeBuddy CN中的Cloud Studio 部署后的链接（可打开，是在有我的合约地址的前提下，会消耗gas)：http://fc3ce12862864904a0e926dbe7dcd0b8.codebuddy.cloudstudio.run/
+### 在CodeBuddy CN中的Cloud Studio 部署后的链接（可打开，是在有我的合约地址的前提下，会消耗gas)：http://fc3ce12862864904a0e926dbe7dcd0b8.codebuddy.cloudstudio.run/
+
 ## 使用步骤
 
 1. 在 Remix 部署合约 → 复制地址
