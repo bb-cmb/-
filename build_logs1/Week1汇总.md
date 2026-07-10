@@ -508,6 +508,10 @@
 ---
 ### 在CodeBuddy CN中的Cloud Studio 部署后的链接（可打开，是在有我的合约地址的前提下，会消耗gas)：http://fc3ce12862864904a0e926dbe7dcd0b8.codebuddy.cloudstudio.run/
 
+<img width="922" height="983" alt="1444a9fe408c2bb64c2628264208a681" src="https://github.com/user-attachments/assets/d4ce7512-6889-4613-8759-b90ddc1f45c8" />
+
+<img width="1891" height="1037" alt="6aa7b123f9daca417be728ac14a309d1" src="https://github.com/user-attachments/assets/cd141c42-891c-4f2a-bbb1-29e23c07b3f4" />
+
 ## 使用步骤
 
 1. 在 Remix 部署合约 → 复制地址
