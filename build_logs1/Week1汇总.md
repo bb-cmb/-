@@ -506,7 +506,7 @@
 | **错误处理** | 无 MetaMask / 拒绝连接 / 拒绝交易 均有提示 |
 
 ---
-### 在CodeBuddy CN中的Cloud Studio 部署后的链接（可打开，是在有我的合约地址的前提下，会消耗gas)：http://fc3ce12862864904a0e926dbe7dcd0b8.codebuddy.cloudstudio.run/
+### 在CodeBuddy CN中的Cloud Studio 部署后的链接（可打开，是在有我的合约地址的前提下，会消耗gas)：(链接已过期)http://fc3ce12862864904a0e926dbe7dcd0b8.codebuddy.cloudstudio.run/
 
 <img width="922" height="983" alt="1444a9fe408c2bb64c2628264208a681" src="https://github.com/user-attachments/assets/d4ce7512-6889-4613-8759-b90ddc1f45c8" />
 
