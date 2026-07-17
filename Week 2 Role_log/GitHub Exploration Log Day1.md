@@ -27,7 +27,7 @@
 4. Pull Requests：开发者提交代码/文档修改，维护者结合自动化测试人工审核后合并
 5. Discussions：非代码类交流区，技术答疑、生态方案、开发思路探讨，和Bug需求做分区隔离
 
-## 三、感兴趣的真实 Issue
+## 三、感兴趣的真实 Issue(来自Moss)
 ### Issue 完整基础信息
 编号：#77
 标题：`[feature] docs: suggest adding a FAQ document for Chinese newcomers`
