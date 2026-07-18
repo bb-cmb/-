@@ -2,7 +2,7 @@
 ## 提案基础信息
 1. 提案编号：**MIP-8**
 2. 提案全称：Page-ified Storage State（分页存储状态）
-3. 原文链接：https://forum.monad.xyz/c/mips/8
+3. 原文链接：https://forum.monad.xyz/t/mip-8-page-ified-storage-state/407
 4. 所属生态：Monad 改进提案（MIP），针对 Monad L1 底层存储性能优化
 
 ## 一、背景问题（提案出台前现存痛点）
